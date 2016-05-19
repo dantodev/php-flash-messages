@@ -1,6 +1,6 @@
-[![Latest Stable Version](https://poser.pugx.org/dtkahl/php-flash-message/v/stable)](https://packagist.org/packages/dtkahl/php-flash-message)
-[![License](https://poser.pugx.org/dtkahl/php-flash-message/license)](https://packagist.org/packages/dtkahl/php-flash-messageK)
-[![Build Status](https://travis-ci.org/dtkahl/php-flash-message.svg?branch=master)](https://travis-ci.org/dtkahl/php-flash-message)
+[![Latest Stable Version](https://poser.pugx.org/dtkahl/php-flash-messages/v/stable)](https://packagist.org/packages/dtkahl/php-flash-messages)
+[![License](https://poser.pugx.org/dtkahl/php-flash-messages/license)](https://packagist.org/packages/dtkahl/php-flash-messagesK)
+[![Build Status](https://travis-ci.org/dtkahl/php-flash-messages.svg?branch=master)](https://travis-ci.org/dtkahl/php-flash-messages)
 
 # PHP flash messages
 
@@ -16,7 +16,7 @@ Session flash messages for PHP
 
 Install with [Composer](http://getcomposer.org):
 
-    composer require dtkahl/php-flash-message
+    composer require dtkahl/php-flash-messages
 
 
 ## Usage
