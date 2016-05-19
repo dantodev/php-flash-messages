@@ -26,7 +26,53 @@ session_start();
 $flash = new \Dtkahl\FlashMessages\FlashMessages;
 ```
 
+**Warning:* Every new instance  will be handled as new call and trunked data under given key in given store.
+
 
 ## Methods
 
-*TBA*
+#### get($type, $key, $default = null)
+
+Returns message with given `$type` and `$key` from last call or `$default` if there is no message.
+
+**or call with predefined type:**
+- getError($key, $default = null)
+- getWarning($key, $default = null)
+- getSuccess($key, $default = null)
+- getInfo($key, $default = null)
+
+
+#### has($type, $key)
+
+Determinate if there is any message with given `$type` and `$key` from last call.
+
+**or call with predefined type:**
+- hasError($key)
+- hasWarning($key)
+- hasSuccess($key)
+- hasInfo($key)
+
+
+#### set($type, $key, $value)
+
+Save message with given `$type` and `$key` to store for next call.
+
+**or call with predefined type:**
+- setError($key, $value)
+- setWarning($key, $value)
+- setSuccess($key, $value)
+- setInfo($key, $value)
+
+
+#### remove($type, $key)
+
+Remove message with given `$type` and `$key` from store for next call.
+
+**or call with predefined type:**
+- removeError($key)
+- removeWarning($key)
+- removeSuccess($key)
+- removeInfo($key)
+
+
+*TBA:* all()/getAll(, getAll{type}(), hasAny(), hasAny{type}()
