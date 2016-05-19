@@ -1,5 +1,5 @@
-[![Latest Stable Version](https://poser.pugx.org/dtkahl/php-flash-message/v/stable)](https://packagist.org/packages/dtkahl/slim-skeleton)
-[![License](https://poser.pugx.org/dtkahl/php-flash-message/license)](https://packagist.org/packages/dtkahl/slim-skeleton)
+[![Latest Stable Version](https://poser.pugx.org/dtkahl/php-flash-message/v/stable)](https://packagist.org/packages/dtkahl/php-flash-message)
+[![License](https://poser.pugx.org/dtkahl/php-flash-message/license)](https://packagist.org/packages/dtkahl/php-flash-messageK)
 [![Build Status](https://travis-ci.org/dtkahl/php-flash-message.svg?branch=master)](https://travis-ci.org/dtkahl/php-flash-message)
 
 # PHP flash messages
