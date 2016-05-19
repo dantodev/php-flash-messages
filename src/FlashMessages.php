@@ -1,8 +1,13 @@
 <?php namespace Dtkahl\FlashMessages;
 class FlashMessages
 {
-  private $prev;
+  
+  const TYPE_ERROR = "error";
+  const TYPE_WARNING = "warning";
+  const TYPE_INFO ="info";
+  const TYPE_SUCCESS = "success";
 
+  private $prev;
   private $storage;
 
   /**
@@ -22,15 +27,75 @@ class FlashMessages
     $storage[$key] = [];
     $this->storage = &$storage[$key];
   }
+  /**
+   * @param $type
+   * @param $key
+   * @param $default
+   * @return mixed
+   */
+  public function get($type, $key, $default = null)
+  {
+    return $this->has($type, $key) ? $this->prev[$type][$key] : $default;
+  }
+
+  /**
+   * @param $type
+   * @param $key
+   * @param $value
+   * @return $this
+   */
+  public function set($type, $key, $value)
+  {
+    if (!array_key_exists($type, $this->storage)) {
+      $this->storage[$type] = [];
+    };
+    $this->storage[$type][$key] = $value;
+    return $this;
+  }
+
+  /**
+   * @param $type
+   * @return array
+   */
+  public function all($type = null)
+  {
+    if (is_null($type)) {
+      return $this->prev; 
+    }
+    return array_key_exists($type, $this->prev) ? $this->prev[$type] : [];
+  }
+
+  /**
+   * @param $type
+   * @param $key
+   * @return $this
+   */
+  public function remove($type, $key)
+  {
+    if (array_key_exists($type, $this->storage) && array_key_exists($key, $this->storage[$type])) {
+      unset($this->storage[$type][$key]);
+    }
+    return $this;
+  }
+
+  /**
+   * @param $type
+   * @param $key
+   * @return bool
+   */
+  public function has($type, $key)
+  {
+    return array_key_exists($type, $this->prev) && array_key_exists($key, $this->prev[$type]);
+  }
 
   /**
    * @param $key
-   * @param null $default
-   * @return null
+   * @param $default
+   * @return mixed
    */
-  public function get($key, $default = null)
+  public function getError($key, $default = null)
   {
-    return $this->has($key) ? $this->prev[$key] : $default;
+    return $this->get(self::TYPE_ERROR, $key, $default);
   }
 
   /**
@@ -38,38 +103,169 @@ class FlashMessages
    * @param $value
    * @return $this
    */
-  public function set($key, $value)
+  public function setError($key, $value)
   {
-    $this->storage[$key] = $value;
-    return $this;
-  }
-
-  /**
-   * @return array
-   */
-  public function all()
-  {
-    return $this->prev;
-  }
-
-  /**
-   * @param $key
-   * @return $this
-   */
-  public function remove($key)
-  {
-    if (array_key_exists($key, $this->storage)) {
-      unset($this->storage[$key]);
-    }
-    return $this;
+    return $this->set(self::TYPE_ERROR, $key, $value);
   }
 
   /**
    * @param $key
    * @return bool
    */
-  public function has($key)
+  public function hasError($key)
   {
-    return array_key_exists($key, $this->prev);
+    return $this->has(self::TYPE_ERROR, $key);
   }
+
+  /**
+   * @return bool
+   */
+  public function hasAnyError()
+  {
+    return !empty($this->all(self::TYPE_ERROR));
+  }
+
+  /**
+   * @return array
+   */
+  public function getAllError()
+  {
+    return $this->all(self::TYPE_ERROR);
+  }
+
+  /**
+   * @param $key
+   * @param $default
+   * @return mixed
+   */
+  public function getWarning($key, $default = null)
+  {
+    return $this->get(self::TYPE_WARNING, $key, $default);
+  }
+
+  /**
+   * @param $key
+   * @param $value
+   * @return $this
+   */
+  public function setWarning($key, $value)
+  {
+    return $this->set(self::TYPE_WARNING, $key, $value);
+  }
+
+  /**
+   * @param $key
+   * @return bool
+   */
+  public function hasWarning($key)
+  {
+    return $this->has(self::TYPE_WARNING, $key);
+  }
+
+  /**
+   * @return bool
+   */
+  public function hasAnyWarning()
+  {
+    return !empty($this->all(self::TYPE_WARNING));
+  }
+
+  /**
+   * @return array
+   */
+  public function getAllWarning()
+  {
+    return $this->all(self::TYPE_WARNING);
+  }
+
+  /**
+   * @param $key
+   * @param $default
+   * @return mixed
+   */
+  public function getSuccess($key, $default = null)
+  {
+    return $this->get(self::TYPE_SUCCESS, $key, $default);
+  }
+
+  /**
+   * @param $key
+   * @param $value
+   * @return $this
+   */
+  public function setSuccess($key, $value)
+  {
+    return $this->set(self::TYPE_SUCCESS, $key, $value);
+  }
+
+  /**
+   * @param $key
+   * @return bool
+   */
+  public function hasSuccess($key)
+  {
+    return $this->has(self::TYPE_SUCCESS, $key);
+  }
+
+  /**
+   * @return bool
+   */
+  public function hasAnySuccess()
+  {
+    return !empty($this->all(self::TYPE_SUCCESS));
+  }
+
+  /**
+   * @return array
+   */
+  public function getAllSuccess()
+  {
+    return $this->all(self::TYPE_SUCCESS);
+  }
+
+  /**
+   * @param $key
+   * @param $default
+   * @return mixed
+   */
+  public function getInfo($key, $default = null)
+  {
+    return $this->get(self::TYPE_INFO, $key, $default);
+  }
+
+  /**
+   * @param $key
+   * @param $value
+   * @return $this
+   */
+  public function setInfo($key, $value)
+  {
+    return $this->set(self::TYPE_INFO, $key, $value);
+  }
+
+  /**
+   * @param $key
+   * @return bool
+   */
+  public function hasInfo($key)
+  {
+    return $this->has(self::TYPE_INFO, $key);
+  }
+
+  /**
+   * @return bool
+   */
+  public function hasAnyInfo()
+  {
+    return !empty($this->all(self::TYPE_INFO));
+  }
+
+  /**
+   * @return array
+   */
+  public function getAllInfo()
+  {
+    return $this->all(self::TYPE_INFO);
+  }
+  
 }
