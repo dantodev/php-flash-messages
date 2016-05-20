@@ -44,7 +44,7 @@ Returns message with given `$type` and `$key` from last call or `$default` if th
 
 #### has($type, $key)
 
-Determinate if there is any message with given `$type` and `$key` from last call.
+Determine if there is any message with given `$type` and `$key` from last call.
 
 **or call with predefined type:**
 - hasError($key)
@@ -85,8 +85,20 @@ Return an array of all messages with given `$type` from last call.
 - getAllSuccess()
 - getAllInfo()
 
+
 #### getAllTypes()
 
 Return an array of all types and their messages from last call.
 
 *TBA:* hasAny(), hasAny{type}()
+
+
+#### hasAny($type)
+
+Determine if there is any messages with given `$type` from last call.
+
+**or call with predefined type:**
+- hasAnyError()
+- hasAnyWarning()
+- hasAnySuccess()
+- hasAnyInfo()

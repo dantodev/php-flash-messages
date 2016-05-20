@@ -30,6 +30,7 @@ class FlashMessagesTest extends \PHPUnit_Framework_TestCase {
   public function testCustomTypeAndDiscard()
   {
     $this->assertFalse($this->flash->has("custom", "foo"));
+    $this->assertFalse($this->flash->hasAny("custom"));
     $this->assertEquals("bar", $this->flash->get("custom", "foo", "bar"));
     $this->assertNull($this->flash->get("custom", "foo"));
 
@@ -46,6 +47,7 @@ class FlashMessagesTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals(["foo" => "bar"], $this->flash->getAll("custom"));
 
     $this->assertTrue($this->flash->has("custom", "foo"));
+    $this->assertTrue($this->flash->hasAny("custom"));
     $this->assertEquals("bar", $this->flash->get("custom", "foo"));
 
     $this->flash = new FlashMessages($this->storage, $this->key);
