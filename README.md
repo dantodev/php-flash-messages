@@ -75,4 +75,14 @@ Remove message with given `$type` and `$key` from store for next call.
 - removeInfo($key)
 
 
-*TBA:* all()/getAll(, getAll{type}(), hasAny(), hasAny{type}()
+#### getAll($type)
+
+Return an array of all messages with given `$type` from last call.
+
+**or call with predefined type:**
+- getAllError()
+- getAllWarning()
+- getAllSuccess()
+- getAllInfo()
+
+*TBA:* hasAny(), hasAny{type}()
