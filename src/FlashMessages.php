@@ -63,6 +63,14 @@ class FlashMessages
   }
 
   /**
+   * @return array
+   */
+  public function getAllTypes()
+  {
+    return $this->prev;
+  }
+
+  /**
    * @param $type
    * @param $key
    * @return $this

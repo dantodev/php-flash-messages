@@ -85,4 +85,8 @@ Return an array of all messages with given `$type` from last call.
 - getAllSuccess()
 - getAllInfo()
 
+#### getAllTypes()
+
+Return an array of all types and their messages from last call.
+
 *TBA:* hasAny(), hasAny{type}()
