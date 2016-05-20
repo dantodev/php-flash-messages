@@ -85,6 +85,18 @@ class FlashMessages
 
   /**
    * @param $type
+   * @return $this
+   */
+  public function removeAll($type)
+  {
+    if (array_key_exists($type, $this->storage)) {
+      $this->storage[$type] = [];
+    }
+    return $this;
+  }
+
+  /**
+   * @param $type
    * @param $key
    * @return bool
    */
@@ -145,6 +157,23 @@ class FlashMessages
 
   /**
    * @param $key
+   * @return $this
+   */
+  public function removeError($key)
+  {
+    return $this->remove(self::TYPE_ERROR, $key);
+  }
+
+  /**
+   * @return $this
+   */
+  public function removeAllError()
+  {
+    return $this->removeAll(self::TYPE_ERROR);
+  }
+
+  /**
+   * @param $key
    * @param $default
    * @return mixed
    */
@@ -186,6 +215,23 @@ class FlashMessages
   public function getAllWarning()
   {
     return $this->getAll(self::TYPE_WARNING);
+  }
+
+  /**
+   * @param $key
+   * @return $this
+   */
+  public function removeWarning($key)
+  {
+    return $this->remove(self::TYPE_WARNING, $key);
+  }
+
+  /**
+   * @return $this
+   */
+  public function removeAllWWarning()
+  {
+    return $this->removeAll(self::TYPE_WARNING);
   }
 
   /**
@@ -235,6 +281,23 @@ class FlashMessages
 
   /**
    * @param $key
+   * @return $this
+   */
+  public function removeSuccess($key)
+  {
+    return $this->remove(self::TYPE_SUCCESS, $key);
+  }
+
+  /**
+   * @return $this
+   */
+  public function removeAllSuccess()
+  {
+    return $this->removeAll(self::TYPE_SUCCESS);
+  }
+
+  /**
+   * @param $key
    * @param $default
    * @return mixed
    */
@@ -276,6 +339,23 @@ class FlashMessages
   public function getAllInfo()
   {
     return $this->getAll(self::TYPE_INFO);
+  }
+
+  /**
+   * @param $key
+   * @return $this
+   */
+  public function removeInfo($key)
+  {
+    return $this->remove(self::TYPE_INFO, $key);
+  }
+
+  /**
+   * @return $this
+   */
+  public function removeAllInfo()
+  {
+    return $this->removeAll(self::TYPE_INFO);
   }
   
 }
