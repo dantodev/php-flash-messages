@@ -33,7 +33,7 @@ class FlashMessagesTest extends \PHPUnit_Framework_TestCase {
     $this->assertEquals("bar", $this->flash->get("custom", "foo", "bar"));
     $this->assertNull($this->flash->get("custom", "foo"));
 
-    #$this->assertEmpty($this->flash->getAll()); // TODO #4
+    $this->assertEmpty($this->flash->getAllTypes());
     $this->assertEmpty($this->flash->getAll("custom"));
 
     $this->flash->set("custom", "foo", "bar");
@@ -42,7 +42,7 @@ class FlashMessagesTest extends \PHPUnit_Framework_TestCase {
     $this->assertArrayHasKey($this->key, $this->storage);
     $this->assertEmpty($this->storage[$this->key]);
 
-    #$this->assertEquals(["custom" => ["foo" => "bar"]], $this->flash->getAll()); // TODO #4
+    $this->assertEquals(["custom" => ["foo" => "bar"]], $this->flash->getAllTypes());
     $this->assertEquals(["foo" => "bar"], $this->flash->getAll("custom"));
 
     $this->assertTrue($this->flash->has("custom", "foo"));
