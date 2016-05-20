@@ -57,11 +57,8 @@ class FlashMessages
    * @param $type
    * @return array
    */
-  public function all($type = null)
+  public function getAll($type)
   {
-    if (is_null($type)) {
-      return $this->prev; 
-    }
     return array_key_exists($type, $this->prev) ? $this->prev[$type] : [];
   }
 
@@ -122,7 +119,7 @@ class FlashMessages
    */
   public function hasAnyError()
   {
-    return !empty($this->all(self::TYPE_ERROR));
+    return !empty($this->getAll(self::TYPE_ERROR));
   }
 
   /**
@@ -130,7 +127,7 @@ class FlashMessages
    */
   public function getAllError()
   {
-    return $this->all(self::TYPE_ERROR);
+    return $this->getAll(self::TYPE_ERROR);
   }
 
   /**
@@ -167,7 +164,7 @@ class FlashMessages
    */
   public function hasAnyWarning()
   {
-    return !empty($this->all(self::TYPE_WARNING));
+    return !empty($this->getAll(self::TYPE_WARNING));
   }
 
   /**
@@ -175,7 +172,7 @@ class FlashMessages
    */
   public function getAllWarning()
   {
-    return $this->all(self::TYPE_WARNING);
+    return $this->getAll(self::TYPE_WARNING);
   }
 
   /**
@@ -212,7 +209,7 @@ class FlashMessages
    */
   public function hasAnySuccess()
   {
-    return !empty($this->all(self::TYPE_SUCCESS));
+    return !empty($this->getAll(self::TYPE_SUCCESS));
   }
 
   /**
@@ -220,7 +217,7 @@ class FlashMessages
    */
   public function getAllSuccess()
   {
-    return $this->all(self::TYPE_SUCCESS);
+    return $this->getAll(self::TYPE_SUCCESS);
   }
 
   /**
@@ -257,7 +254,7 @@ class FlashMessages
    */
   public function hasAnyInfo()
   {
-    return !empty($this->all(self::TYPE_INFO));
+    return !empty($this->getAll(self::TYPE_INFO));
   }
 
   /**
@@ -265,7 +262,7 @@ class FlashMessages
    */
   public function getAllInfo()
   {
-    return $this->all(self::TYPE_INFO);
+    return $this->getAll(self::TYPE_INFO);
   }
   
 }
