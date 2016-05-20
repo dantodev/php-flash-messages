@@ -75,6 +75,17 @@ Remove message with given `$type` and `$key` from store for next call.
 - removeInfo($key)
 
 
+#### removeAll($type)
+
+Remove all messages with given `$type` from store for next call.
+
+**or call with predefined type:**
+- removeError($key)
+- removeWarning($key)
+- removeSuccess($key)
+- removeInfo($key)
+
+
 #### getAll($type)
 
 Return an array of all messages with given `$type` from last call.
